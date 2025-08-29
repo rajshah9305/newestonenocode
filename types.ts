@@ -2,6 +2,8 @@ import type { LucideIcon } from 'lucide-react';
 
 export type View = 'landing' | 'dashboard' | 'builder';
 
+export type Theme = 'light' | 'dark';
+
 export interface Agent {
   id: string;
   name: string;
@@ -10,6 +12,13 @@ export interface Agent {
 }
 
 export type ProjectStatus = 'deployed' | 'building' | 'draft' | 'error';
+
+export interface ActivityLog {
+    id: string;
+    timestamp: string;
+    text: string;
+    icon: LucideIcon;
+}
 
 export interface Project {
   id: number;
@@ -23,6 +32,7 @@ export interface Project {
   deployUrl?: string;
   icon: LucideIcon;
   performanceData: { month: string; value: number }[];
+  activity: ActivityLog[];
 }
 
 export interface Stat {
@@ -33,17 +43,21 @@ export interface Stat {
     changeType: 'increase' | 'decrease' | 'neutral';
 }
 
-// Gemini API Response Structure
-export interface GeneratedComponent {
-    name: string;
-    description: string;
-    code: string;
+export interface ChatMessage {
+    id: number;
+    sender: 'user' | 'ai';
+    text: string;
+    suggestedReplies?: string[];
+    final?: boolean; 
 }
 
-export interface GeneratedPage {
+// --- Generated App Structure ---
+
+export interface FileNode {
     name: string;
-    path: string;
-    description: string;
+    type: 'file' | 'folder';
+    code?: string;
+    children?: FileNode[];
 }
 
 export interface GeneratedApp {
@@ -54,7 +68,9 @@ export interface GeneratedApp {
         secondary: string;
         accent: string;
         neutral: string;
+        background: string;
+        text: string;
     };
-    pages: GeneratedPage[];
-    components: GeneratedComponent[];
+    fileTree: FileNode[];
+    dependencies: Record<string, string>;
 }

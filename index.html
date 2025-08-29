@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,19 +9,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --background: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #6b7280;
+        --card-bg: #f9fafb;
+        --border-color: #e5e7eb;
+        --grid-line: #e5e7eb;
+      }
+      html.dark {
+        --background: #111827;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+        --card-bg: #1f2937;
+        --border-color: #374151;
+        --grid-line: #374151;
+      }
       body {
         font-family: 'Inter', sans-serif;
+        background-color: var(--background);
+        color: var(--text-primary);
       }
-       .bg-grid-gray-100 {
-          background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(to right, #e5e7eb 1px, transparent 1px);
-          background-size: 40px 40px;
-          background-color: #ffffff;
-          opacity: 0.4;
+      /* Custom scrollbar for webkit browsers */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
       }
-      .builder-bg {
-          background-image: radial-gradient(#f3f4f6 1px, transparent 1px);
-          background-size: 20px 20px;
-          background-color: #ffffff;
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4b5563; /* gray-600 */
       }
     </style>
   <script type="importmap">

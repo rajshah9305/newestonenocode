@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { View } from './types';
@@ -9,8 +9,8 @@ import Dashboard from './components/Dashboard';
 import AIBuilder from './components/AIBuilder';
 
 export default function App() {
-    const [currentView, setCurrentView] = useState<View>('landing');
-    const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+    const [currentView, setCurrentView] = React.useState<View>('landing');
+    const [commandPaletteOpen, setCommandPaletteOpen] = React.useState(false);
 
     const renderCurrentView = () => {
         switch (currentView) {
@@ -26,7 +26,7 @@ export default function App() {
     };
 
     return (
-        <div className="font-sans antialiased bg-white">
+        <div className="font-sans antialiased">
             <GlowEffect />
             <CommandPalette open={commandPaletteOpen} setOpen={setCommandPaletteOpen} />
             <AnimatePresence mode="wait">
